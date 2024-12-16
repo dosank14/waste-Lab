@@ -14,6 +14,10 @@ const Game = () => {
   const backgroundRef = useRef(null);
   const runnersRef = useRef([]);
   const goalLineRef = useRef(null);
+  const startSoundRef = useRef(null);
+  const goalSoundRef = useRef(null);
+  const bgmRef = useRef(null);
+
   const searchParams = useSearchParams();
   const type = searchParams.get('type');
 
@@ -24,6 +28,9 @@ const Game = () => {
       const selectDishes=selectRandomDishes(type);
       setRunnerdishes(selectDishes);
       setRunnerImages(selectImages);
+      startSoundRef.current = document.getElementById('se1');
+      goalSoundRef.current = document.getElementById('se2');
+      bgmRef.current = document.getElementById('bgm');
     
   }, []);
 
@@ -35,6 +42,9 @@ const Game = () => {
       runner.style.transition = 'transform 2s linear';
       runner.style.transform = 'translateX(50vw)';
     });
+
+    startSoundRef.current?.play();
+    bgmRef.current?.play();
 
     setTimeout(() => {
       if (backgroundRef.current) {
@@ -73,42 +83,48 @@ const Game = () => {
       if (backgroundRef.current) {
         backgroundRef.current.style.animationPlayState = 'paused';
       }
-      
+      bgmRef.current?.pause();
+      goalSoundRef.current?.play();
       setWinner(Winnerid); 
     }, 1500);
   };
 
   return (
-    <div className="race-container">
-      <div className="background" ref={backgroundRef}></div>
-      <div className="race-track">
-        {[0, 1, 2, 3].map((id) => (
-          <div key={id} className={`runner runner${id + 1}`} ref={(el) => runnersRef.current[id] = el}>
-            {runnerImages[id] && <img src={runnerImages[id]} alt={`${runnerDishes[id + 1]}`} />}
-          </div>
-        ))}
-        <div className="goal-line" ref={goalLineRef}></div>
+    <>
+      <audio src="https://www.springin.org/wp-content/uploads/2022/11/Pops_05.mp3" loop id="bgm"></audio>
+      <audio src="https://soundeffect-lab.info/sound/various/mp3/cracker1.mp3" id="se1"></audio>
+      <audio src="https://soundeffect-lab.info/sound/button/mp3/decision24.mp3" id="se2"></audio>
+      <div className="race-container">
+        <div className="background" ref={backgroundRef}></div>
+          <div className="race-track">
+          {[0, 1, 2, 3].map((id) => (
+            <div key={id} className={`runner runner${id + 1}`} ref={(el) => runnersRef.current[id] = el}>
+              {runnerImages[id] && <img src={runnerImages[id]} alt={`${runnerDishes[id + 1]}`} />}
+            </div>
+          ))}
+          <div className="goal-line" ref={goalLineRef}></div>
       </div>
       {!isRacing && <button id="startBtn" onClick={startRace}>スタート</button>}
       {iswinner !== null && (
         <div>
-          <div className="winner-display"style={{display:'block'}}>
-            <br/>
-            {runnerDishes[iswinner]}
-            <img src={runnerImages[iswinner]} alt="Winner" style={{width: '100px', height: '100px', borderRadius: '50%'}} />
-            <br />
-           ゴール！！
+          <div className="winner-display"style={{display:'block',justifyContent:'center',alignItems:'center'}}>
+              <br/>
+                {runnerDishes[iswinner]}
+              <img src={runnerImages[iswinner]} alt="Winner" style={{width: '100px', height: '100px', borderRadius: '50%'}} />
+              <br />
+              ゴール！！
+            </div>
+            <div>
+              <Link href="/">
+                <button id="homeBtn" className="home-button">
+                  ホームに戻る
+                </button>
+             </Link>
+            </div> 
           </div>
-          <div>
-            <Link href="/">
-              <button id="homeBtn" className="home-button">
-                ホームに戻る
-              </button>
-           </Link>
-         </div> 
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 };
 
