@@ -66,6 +66,9 @@ export const simulateOvertaking = (runnersRef) => {
         case 'chinese':
             foodData=[...dishes.chinese];
             break;
+        case 'random':
+          foodData=[...dishes.japanese,...dishes.western,...dishes.chinese];
+          break;
     }
     const selectfoodData=RandomSelect(foodData);
 

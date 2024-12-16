@@ -1,12 +1,12 @@
-.button2 {
+.button4 {
     box-sizing: border-box; /* ボックスモデルの設定 */
     position: absolute; /* 絶対位置 */
     width: 50vh; /* 幅 */
     height: 10vh; /* 高さ */
     left: 55%; /* 左位置 */
-    top: 45vh;
+    top: 70vh;
         
-    background: #FFFAF0; /* 背景色 */
+    background: #1E90FF; /* 背景色 */
     border: 1px solid #000000; /* ボーダー */
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* 影 */
     border-radius: 10px; /* 角丸 */
@@ -20,7 +20,7 @@
     justify-content: center; /* 水平方向中央揃え */
 }
 
-/* Rectangle 2 */
+/* Rectangle 4 */
 /*
 box-sizing: border-box;
 
@@ -28,9 +28,10 @@ position: absolute;
 width: 518px;
 height: 115px;
 left: 458px;
-top: 679px;
+top: 879px;
 
-background: #FFFAF0;
+background: #1E90FF;
 border: 1px solid #000000;
+filter: blur(2px);
 border-radius: 10px;
 */

@@ -1,11 +1,10 @@
 .button1 {
     box-sizing: border-box; /* ボックスモデルの設定 */
     position: absolute; /* 絶対位置 */
-    width: 600px; /* 幅 */
-    height: 80px; /* 高さ */
-    left: 50%; /* 左位置 */
-    transform: translateX(-50%); /* 中央揃えのために左位置を調整 */
-    top: 40%;
+    width: 50vh; /* 幅 */
+    height: 10vh; /* 高さ */
+    left: 20%; /* 左位置 */
+    top: 45vh;
         
     background: #FF6347; /* 背景色 */
     border: 1px solid #000000; /* ボーダー */
@@ -13,7 +12,7 @@
     border-radius: 10px; /* 角丸 */
         
     color: black; /* テキストの色 */
-    font-size: 60px; /* フォントサイズ */
+    font-size: 3vw; /* フォントサイズ */
     font-weight: bold; /* 太字に設定 */
     cursor: pointer; /* カーソルをポインタに */
     display: flex; /* フレックスボックスで中央揃え */

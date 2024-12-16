@@ -31,7 +31,6 @@ const Game = () => {
       startSoundRef.current = document.getElementById('se1');
       goalSoundRef.current = document.getElementById('se2');
       bgmRef.current = document.getElementById('bgm');
-    
   }, []);
 
   const startRace = () => {
@@ -94,6 +93,14 @@ const Game = () => {
       <audio src="https://www.springin.org/wp-content/uploads/2022/11/Pops_05.mp3" loop id="bgm"></audio>
       <audio src="https://soundeffect-lab.info/sound/various/mp3/cracker1.mp3" id="se1"></audio>
       <audio src="https://soundeffect-lab.info/sound/button/mp3/decision24.mp3" id="se2"></audio>
+      <div className="name-display" style={{display:'flex'}}>
+      {isRacing &&runnerImages.map((image, index) => (
+          <div key={index} className="runner-info">
+            <img src={image} alt={`Runner ${index + 1}`} />
+            <span>{runnerDishes[index]}</span>
+          </div>
+        ))}
+      </div>
       <div className="race-container">
         <div className="background" ref={backgroundRef}></div>
           <div className="race-track">
@@ -110,7 +117,7 @@ const Game = () => {
           <div className="winner-display"style={{display:'block',justifyContent:'center',alignItems:'center'}}>
               <br/>
                 {runnerDishes[iswinner]}
-              <img src={runnerImages[iswinner]} alt="Winner" style={{width: '100px', height: '100px', borderRadius: '50%'}} />
+              <img src={runnerImages[iswinner]} alt="Winner" style={{width: '100px', height: '100px', borderRadius: '50%',justifyContent:'center',alignItems:'center'}} />
               <br />
               ゴール！！
             </div>
