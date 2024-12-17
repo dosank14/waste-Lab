@@ -90,9 +90,9 @@ const Game = () => {
 
   return (
     <>
-      <audio src="https://www.springin.org/wp-content/uploads/2022/11/Pops_05.mp3" loop id="bgm"></audio>
-      <audio src="https://soundeffect-lab.info/sound/various/mp3/cracker1.mp3" id="se1"></audio>
-      <audio src="https://soundeffect-lab.info/sound/button/mp3/decision24.mp3" id="se2"></audio>
+      <audio src="https://www.dropbox.com/scl/fi/pd6t8asph131ktkyf3sq3/Pops_05.mp3?rlkey=eqe94hfokq8sfqhz6o7kbj5g0&st=ufdxktm2&raw=1" loop id="bgm"></audio>
+      <audio src="https://www.dropbox.com/scl/fi/bw7burw71e7h8lwndxmm0/.mp3?rlkey=8zsbqt2s2h9e5ne5oxf9bcl1e&st=lhwcnh5p&raw=1" id="se1"></audio>
+      <audio src="https://www.dropbox.com/scl/fi/esrorsc824rfw66ilq35a/24.mp3?rlkey=uxtbc0ajx3nwstf3x8tal0z3f&st=41754mp0&raw=1" id="se2"></audio>
       <div className="name-display" style={{display:'flex'}}>
       {isRacing &&runnerImages.map((image, index) => (
           <div key={index} className="runner-info">
