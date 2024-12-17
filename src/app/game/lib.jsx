@@ -5,7 +5,7 @@ export const selectRandomImages = (monsterImages) => {
     return selectedImages;
   };
 
-export const simulateOvertaking = (runnersRef) => {
+export const simulateOvertaking = (runnersRef,goalLineRef,callback) => {
     const duration = 5000;
     const fps = 60;
     const totalFrames = (duration / 1000) * fps;
@@ -21,11 +21,15 @@ export const simulateOvertaking = (runnersRef) => {
     }));
 
     const animate = () => {
-      if (frame >= totalFrames) return;
-
+      if (frame >= totalFrames) {
+        goalLineRef.current.style.transition = 'left 1.5s ease-out'; //ゴールライン速度
+        goalLineRef.current.style.left = '10%'; // ゴールライン
+        if (callback) callback();
+        return;
+      }
       runners.forEach((runner) => {
         const wobble = Math.sin(frame * runner.frequency) * runner.amplitude;
-        
+        const verticalWobble = Math.sin(frame * 0.1) * 20; // 縦揺れ
         runner.position += runner.speed;
         
         if (runner.position < 20) {
@@ -44,7 +48,7 @@ export const simulateOvertaking = (runnersRef) => {
           }
         }
 
-        runner.element.style.transform = `translateX(${runner.position + wobble}vw)`;
+        runner.element.style.transform = `translate(${runner.position + wobble}vw, ${verticalWobble}px)`;
       });
 
       frame++;

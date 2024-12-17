@@ -55,9 +55,9 @@ const Game = () => {
         runner.style.transition = 'transform 0.1s linear';
       });
 
-      simulateOvertaking(runnersRef);
+      simulateOvertaking(runnersRef,goalLineRef,() => finishRace());
 
-      setTimeout(() => finishRace(), 5000);
+      //setTimeout(() => finishRace(), 5000);
     }, 2000);
   };
 
