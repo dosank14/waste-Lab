@@ -57,7 +57,6 @@ const Game = () => {
 
       simulateOvertaking(runnersRef,goalLineRef,() => finishRace());
 
-      //setTimeout(() => finishRace(), 5000);
     }, 2000);
   };
 
@@ -114,10 +113,16 @@ const Game = () => {
       {!isRacing && <button id="startBtn" onClick={startRace}>スタート</button>}
       {iswinner !== null && (
         <div>
-          <div className="winner-display"style={{display:'block',justifyContent:'center',alignItems:'center'}}>
+          <div className="winner-display"style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              textAlign: 'center'
+            }}>
               <br/>
                 {runnerDishes[iswinner]}
-              <img src={runnerImages[iswinner]} alt="Winner" style={{width: '100px', height: '100px', borderRadius: '50%',justifyContent:'center',alignItems:'center'}} />
+              <img src={runnerImages[iswinner]} alt="Winner" style={{width: '100px', height: '100px', borderRadius: '50%',margin:'10px 10px'}} />
               <br />
               ゴール！！
             </div>

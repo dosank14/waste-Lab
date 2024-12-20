@@ -40,10 +40,10 @@ body {
   position: relative;
 }
 
-.runner1 { top: 30%; }
-.runner2 { top: 45%; }
-.runner3 { top: 60%; }
-.runner4 { top: 75%; }
+.runner1 { top: 35%; }
+.runner2 { top: 50%; }
+.runner3 { top: 65%; }
+.runner4 { top: 80%; }
 
 .name-display {
   position: fixed;
